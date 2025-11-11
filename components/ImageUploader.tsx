@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { UploadIcon } from './icons';
 import { ImageFile } from '../types';
@@ -57,18 +56,18 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, isL
     <div className="w-full max-w-2xl mx-auto text-center">
       <div
         className={`relative block w-full rounded-lg border-2 border-dashed p-12 text-center transition-colors ${
-          isDragging ? 'border-indigo-500 bg-indigo-50' : 'border-gray-300 hover:border-gray-400'
+          isDragging ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/50' : 'border-gray-300 dark:border-slate-600 hover:border-gray-400 dark:hover:border-slate-500'
         }`}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <UploadIcon className="mx-auto h-12 w-12 text-gray-400" />
-        <span className="mt-2 block text-sm font-semibold text-gray-900">
+        <UploadIcon className="mx-auto h-12 w-12 text-gray-400 dark:text-slate-500" />
+        <span className="mt-2 block text-sm font-semibold text-gray-900 dark:text-slate-100">
           Upload a photo of your room
         </span>
-        <span className="mt-1 block text-sm text-gray-500">
+        <span className="mt-1 block text-sm text-gray-500 dark:text-slate-400">
           Drag and drop, or click to select a file
         </span>
         <input

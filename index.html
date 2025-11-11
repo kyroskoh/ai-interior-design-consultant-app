@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-M" />
+    <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Interior Design Consultant</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
@@ -17,8 +16,52 @@
   }
 }
 </script>
-</head>
-  <body class="bg-gray-50">
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <style>
+      /* For Webkit browsers like Chrome, Safari */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* slate-100 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; /* slate-300 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; /* slate-400 */
+      }
+
+      html.dark ::-webkit-scrollbar-track {
+        background: #1e293b; /* slate-800 */
+      }
+      html.dark ::-webkit-scrollbar-thumb {
+        background: #475569; /* slate-600 */
+      }
+      html.dark ::-webkit-scrollbar-thumb:hover {
+        background: #64748b; /* slate-500 */
+      }
+
+      /* For Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e1 #f1f5f9; /* thumb track */
+      }
+      html.dark * {
+        scrollbar-color: #475569 #1e293b; /* thumb track */
+      }
+    </style>
+  </head>
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
