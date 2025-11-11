@@ -26,3 +26,14 @@ export interface ImageFile {
   mimeType: string;
   name: string;
 }
+
+export interface CustomizationSelections {
+    [category: string]: string;
+}
+
+export interface MoodBoardItem {
+    id: string;
+    imageBase64: string;
+    styleName: string;
+    customizations: CustomizationSelections;
+}

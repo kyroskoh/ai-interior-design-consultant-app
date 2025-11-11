@@ -39,3 +39,10 @@ export const STYLES: Style[] = [
     prompt: 'Reimagine this room with a minimalist design. Strip everything down to its essential quality. Use a monochromatic color palette, clean lines, and simple forms. The space should be clutter-free, well-lit, and functional, with every object having a clear purpose.'
   }
 ];
+
+export const CUSTOMIZATIONS: { [category: string]: string[] } = {
+  'Flooring': ['Natural Hardwood', 'Dark Hardwood', 'Plush Carpet', 'Polished Concrete', 'Marble Tile'],
+  'Wall Finish': ['Matte Paint', 'Glossy Paint', 'Elegant Wallpaper', 'Exposed Brick', 'Wood Paneling'],
+  'Main Furniture Material': ['Cozy Fabric', 'Sleek Leather', 'Natural Wood', 'Polished Metal', 'Woven Rattan'],
+  'Accent Metal': ['Brushed Gold', 'Matte Black', 'Chrome', 'Bronze'],
+};

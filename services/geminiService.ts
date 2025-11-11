@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Modality, Type } from "@google/genai";
-import { ShoppingItem } from '../types';
+import { ShoppingItem, CustomizationSelections } from '../types';
 
 if (!process.env.API_KEY) {
   throw new Error("API_KEY environment variable is not set");
@@ -28,14 +28,26 @@ export const base64ToGenerativePart = (base64: string, mimeType: string) => {
     };
 };
 
-export const generateImage = async (base64Image: string, mimeType: string, prompt: string): Promise<string> => {
+export const generateImage = async (base64Image: string, mimeType: string, prompt: string, customizations?: CustomizationSelections): Promise<string> => {
+    let finalPrompt = prompt;
+
+    if (customizations && Object.keys(customizations).length > 0) {
+        const customizationClauses = Object.entries(customizations)
+            .filter(([, value]) => value)
+            .map(([key, value]) => `${key} should be ${value}`);
+        
+        if (customizationClauses.length > 0) {
+            finalPrompt = `${prompt}. Pay close attention to these details: ${customizationClauses.join('. ')}.`;
+        }
+    }
+
     try {
         const response = await ai.models.generateContent({
             model: imageGenerationModel,
             contents: {
                 parts: [
                     base64ToGenerativePart(base64Image, mimeType),
-                    { text: prompt },
+                    { text: finalPrompt },
                 ],
             },
             config: {
